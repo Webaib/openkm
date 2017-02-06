@@ -27,4 +27,6 @@ ENV PATH $PATH:$CATALINA_HOME/bin
 
 EXPOSE 8080 2002
 
+VOLUME /usr/local/tomcat/repository
+
 CMD /usr/local/tomcat/bin/catalina.sh run
