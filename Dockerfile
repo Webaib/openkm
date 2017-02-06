@@ -5,7 +5,7 @@ MAINTAINER mcsaky <webaib@gmail.com>
 ENV CATALINA_HOME /usr/local/tomcat
 ENV TOMCAT_VERSION 7.0.54
 ENV JAVA_HOME /usr/local/java
-ENV ORACLE_JAVA_HOME /usr/lib/jvm/java-7-oracle/
+ENV ORACLE_JAVA_HOME /usr/lib/jvm/java-8-oracle/
 
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
     echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
@@ -18,8 +18,6 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-s
 RUN ln -s $ORACLE_JAVA_HOME $JAVA_HOME
 
 RUN apt-get -y install libreoffice imagemagick swftools liblog4j1.2-java libgnumail-java ant curl unzip  sudo tar
-
-
 
 RUN curl -L https://downloads.sourceforge.net/project/openkm/6.3.2/openkm-6.3.2-community-tomcat-bundle.zip -o /usr/local/openkm-tomcat-bundle.zip && \
     unzip /usr/local/openkm-tomcat-bundle.zip -d /usr/local/ && rm /usr/local/openkm-tomcat-bundle.zip && ln -s $CATALINA_HOME /opt/openkm
