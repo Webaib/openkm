@@ -1,4 +1,4 @@
-FROM dockerfile/ubuntu
+FROM ubuntu:xenial
 
 MAINTAINER mcsaky <webaib@gmail.com>
 
@@ -10,9 +10,9 @@ ENV ORACLE_JAVA_HOME /usr/lib/jvm/java-7-oracle/
 RUN \
   echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
   echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
-  add-apt-repository -y ppa:webupd8team/java && \
-  apt-get update && \
-  apt-get install -y oracle-java7-installer
+  sudo add-apt-repository -y ppa:webupd8team/java && \
+  sudo apt-get update && \
+  sudo apt-get install -y oracle-java7-installer
 
 RUN ln -s $ORACLE_JAVA_HOME $JAVA_HOME
 
